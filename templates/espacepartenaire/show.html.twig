@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espacepartenaire{% endblock %}
+
+{% block body %}
+    <h1>Espacepartenaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdEspace</th>
+                <td>{{ espacepartenaire.idEspace }}</td>
+            </tr>
+            <tr>
+                <th>IdUser</th>
+                <td>{{ espacepartenaire.idUser }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ espacepartenaire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ espacepartenaire.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ espacepartenaire.type }}</td>
+            </tr>
+            <tr>
+                <th>Photos</th>
+                <td>{{ espacepartenaire.photos }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ espacepartenaire.description }}</td>
+            </tr>
+            <tr>
+                <th>IdCategorie</th>
+                <td>{{ espacepartenaire.idCategorie }}</td>
+            </tr>
+            <tr>
+                <th>Accepted</th>
+                <td>{{ espacepartenaire.accepted ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Nbclick</th>
+                <td>{{ espacepartenaire.nbclick }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_espacepartenaire_index') }}">back to list</a>
+
+    <a href="{{ path('app_espacepartenaire_edit', {'idEspace': espacepartenaire.idEspace}) }}">edit</a>
+
+    {{ include('espacepartenaire/_delete_form.html.twig') }}
+{% endblock %}

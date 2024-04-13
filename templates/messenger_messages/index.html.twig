@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MessengerMessages index{% endblock %}
+
+{% block body %}
+    <h1>MessengerMessages index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Body</th>
+                <th>Headers</th>
+                <th>QueueName</th>
+                <th>CreatedAt</th>
+                <th>AvailableAt</th>
+                <th>DeliveredAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for messenger_message in messenger_messages %}
+            <tr>
+                <td>{{ messenger_message.id }}</td>
+                <td>{{ messenger_message.body }}</td>
+                <td>{{ messenger_message.headers }}</td>
+                <td>{{ messenger_message.queueName }}</td>
+                <td>{{ messenger_message.createdAt ? messenger_message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ messenger_message.availableAt ? messenger_message.availableAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ messenger_message.deliveredAt ? messenger_message.deliveredAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_messenger_messages_show', {'id': messenger_message.id}) }}">show</a>
+                    <a href="{{ path('app_messenger_messages_edit', {'id': messenger_message.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_messenger_messages_new') }}">Create new</a>
+{% endblock %}

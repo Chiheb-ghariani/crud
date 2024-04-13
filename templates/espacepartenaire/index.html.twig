@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espacepartenaire index{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <div class="logo">
+                        <a href="/espacepartenaire"> Viragecom</a>
+                    </div>
+                </header>
+
+               
+
+                <!-- Services -->
+                <section class="services">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for espacepartenaire in espacepartenaires %}
+                            <div class="col-md-4">
+                                <div class="service-item">
+                                    <h4>{{ espacepartenaire.nom }}</h4>
+                                    <p>{{ espacepartenaire.localisation }}</p>
+                                    <p>{{ espacepartenaire.type }}</p>
+                                    <p>{{ espacepartenaire.photos }}</p>
+                                    <p>{{ espacepartenaire.description }}</p>
+                                    <div class="actions">
+                                        <a href="{{ path('app_espacepartenaire_show', {'idEspace': espacepartenaire.idEspace}) }}">show</a>
+                                        <a href="{{ path('app_espacepartenaire_edit', {'idEspace': espacepartenaire.idEspace}) }}">edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="col-md-12">
+                                <p>no records found</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                        <a href="{{ path('app_espacepartenaire_new') }}">Create new</a>
+
+                </section>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+                <!-- Search Box -->
+                <section id="search" class="alt">
+                    <form method="get" action="#">
+                        <input type="text" name="search" id="search" placeholder="Search..." />
+                    </form>
+                </section>
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <ul>
+                        <li><a href="/espacepartenaire">Espace Partenaire</a></li>
+                        <li><a href="simple_page.html">Simple Page</a></li>
+                        <li><a href="shortcodes.html">Shortcodes</a></li>
+                        <li>
+                            <span class="opener">Dropdown One</span>
+                            <ul>
+                                <li><a href="#">First Sub Menu</a></li>
+                                <li><a href="#">Second Sub Menu</a></li>
+                                <li><a href="#">Third Sub Menu</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">Dropdown Two</span>
+                            <ul>
+                                <li><a href="#">Sub Menu #1</a></li>
+                                <li><a href="#">Sub Menu #2</a></li>
+                                <li><a href="#">Sub Menu #3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.google.com">External Link</a></li>
+                    </ul>
+                </nav>
+
+               
+
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
